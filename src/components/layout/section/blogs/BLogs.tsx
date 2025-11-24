@@ -6,6 +6,7 @@ import photoNews2 from "../../../../assets/images/news-2.png";
 import photoNews3 from "../../../../assets/images/news-3.png";
 import {Button} from "../../../Button.tsx";
 import {News} from "./news/News.tsx";
+import * as React from "react";
 
 
 const newsList = [
@@ -34,7 +35,7 @@ const newsList = [
 
 export type NewsListType = typeof newsList;
 
-export const BLogs = () => {
+export const BLogs: React.FC = () => {
 
     return (
         <StyledBLogs>

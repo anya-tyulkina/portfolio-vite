@@ -1,18 +1,16 @@
 import styled from "styled-components";
+import {BurgerMenuHeader} from "./BurgerMenu/BurgerMenuHeader.tsx";
+import {useState} from "react";
 import {Container} from "../../Container.tsx";
-import {theme} from "../../../style/Theme.tsx";
-import {Icon} from "../../icon/Icon.tsx";
-import {FlexWrapper} from "../../FlexWrapper.tsx";
-// import {BurgerMenuHeader} from "./BurgerMenu/BurgerMenuHeader.tsx";
+import * as React from "react";
 
-export const Header = () => {
+export const Header: React.FC = () => {
+    const [isOpen, setOpen] = useState(false);
+
     return (
-        <StyledHeader>
+        <StyledHeader isOpen={isOpen}>
             <Container>
-                <FlexWrapper align={"center"}>
-                    <Icon iconId={"logo"} width={"180"} height={"30px"} viewBox={"0 0 220 30"}/>
-                </FlexWrapper>
-                {/*<BurgerMenuHeader/>*/}
+                <BurgerMenuHeader isOpen={isOpen} setOpen={setOpen}/>
             </Container>
         </StyledHeader>
 
@@ -20,15 +18,14 @@ export const Header = () => {
 }
 
 
-const StyledHeader = styled.header`
-    background: ${theme.colors.primaryBg};
-    padding: 30px 0;
-    
-    @media ${theme.media.tablet} {
-        svg {
-            width: 100px;
-            height: 20px;
-        }
-    }
+const StyledHeader = styled.header<{ isOpen: boolean }>`
+    position: fixed;
+    z-index: 1;
+
+    width: 100vw;
+    height: 90px;
+
+    background-color: ${props => props.isOpen ? "rgba(18, 17, 17, 0)" : "rgba(5,5,5,0.67)"};
+    transition: 0.3s ease-in-out;
 `
 

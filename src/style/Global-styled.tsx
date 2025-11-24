@@ -1,5 +1,4 @@
 import {createGlobalStyle} from "styled-components";
-import {theme} from "./Theme.tsx";
 
 export const GlobalStyle = createGlobalStyle`
     
@@ -41,13 +40,6 @@ export const GlobalStyle = createGlobalStyle`
         max-width: 400px;
         width: 100%;
         min-height: 25px;
-    }
-    
-    @media ${theme.media.tablet} {
-        section {
-            padding-top: 50px !important;
-            padding-bottom: 50px !important;
-        }
     }
     
 `

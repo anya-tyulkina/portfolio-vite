@@ -36,7 +36,6 @@ const StyledButton = styled.button<ButtonPropsType>`
     border: 1px solid ${theme.colors.fontColor};
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    cursor: pointer;
     
     max-width: ${props => props.width || "200px"};
     min-height: ${props => props.height || "60px"};
@@ -52,10 +51,15 @@ const StyledButton = styled.button<ButtonPropsType>`
 
 
 
-    transition: transform 0.3s ease;
-    &:hover {
-        transform: scale(1.1);
+    @media screen and (min-width: 768px) {
+        cursor: pointer;
+        
+        transition: transform 0.3s ease;
+        &:hover {
+            transform: scale(1.1);
+        }
     }
+    
 `
 
 const WrapperIcon = styled.div`

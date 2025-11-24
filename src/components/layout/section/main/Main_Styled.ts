@@ -44,6 +44,8 @@ const TitleMain = styled.div`
     }
 
     @media ${theme.media.desktop}{
+        
+        padding-top: 100px;
         justify-content: flex-start;
         gap: 10px;
     }
@@ -81,10 +83,13 @@ const ButtonMain = styled.button`
     gap: 12px;
     padding: 20px 40px;
 
-    
-    transition: transform 0.3s ease;
-    &:hover {
-        transform: scale(1.1);
+    @media screen and (min-width: 768px) {
+        cursor: pointer;
+
+        transition: transform 0.3s ease;
+        &:hover {
+            transform: scale(1.1);
+        }
     }
     
     
