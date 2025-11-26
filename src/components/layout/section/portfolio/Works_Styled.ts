@@ -2,7 +2,11 @@ import styled from "styled-components";
 import {theme} from "../../../../style/Theme.tsx";
 
 const Works = styled.section`
-    padding: 100px 0 120px;
+    padding: 116px 0 200px;
+
+    @media ${theme.media.desktop} {
+        padding: 50px 0 100px;
+    }
 `
 
 const WrapperWorks = styled.div`
@@ -10,11 +14,11 @@ const WrapperWorks = styled.div`
     column-count: 2;
     column-gap: 60px;
 
-    @media (max-width: 920px) {
+    @media ${theme.media.desktop} {
         column-count: 1;
         
         a {
-            margin: 0 auto;  //не знаю насколько верно
+            margin: 0 auto; 
         }
     }
 `
@@ -33,9 +37,13 @@ const WorkWrapper = styled.article`
 
 const Work = styled.figure`
     display: inline-block;
-    margin-bottom: 60px;
+    margin-bottom: 62px;
     text-align: right;
     width: 100%;
+    
+    @media ${theme.media.desktop} {
+        text-align: left;
+    }
 `
 
 const Image = styled.img`
