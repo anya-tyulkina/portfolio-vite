@@ -39,9 +39,7 @@ const WrapperSlider = styled.div`
     position: relative;
     overflow: hidden;
     
-    @media screen and (min-width: 768px) {
-        padding: 80px 100px;
-    }
+    width: 100%;
 `
 
 const PaginationButton = styled.button`
@@ -58,67 +56,27 @@ const PaginationButton = styled.button`
     }
 `;
 
-const PaginationPrev = styled(PaginationButton)`
-    left: 0;
-    transform: translateY(-50%) rotate(180deg);
-
-    transition: transform 0.3s ease;
-    &:hover {
-        transform: translateY(-50%) rotate(180deg) scale(1.3);
-    }
-`;
-
-const PaginationNext = styled(PaginationButton)`
-    right: 0;
-
-    transition: transform 0.3s ease;
-    &:hover {
-        transform: translateY(-50%) scale(1.3);
-    }
-`;
-
-const PaginationMobile = styled.div`
-
-    display: none;
-
-    @media ${theme.media.tablet} {
-        display: block;
-    }
-
-    width: fit-content;
-    margin-top: 60px;
-
-    span {
-        display: inline-block;
-        margin: 0 5px;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background-color: #fff;
-    }
-
-    span:nth-child(2) {
-        background-color: rgba(106, 100, 100, 0.83);
-        border-radius: 30%;
-
-        width: 20px;
-        height: 7px;
-    }
-`
-
 
 // slider
 
-const Slider = styled.ul`
-    margin-top: 55px;
-
-    position: relative;
-`
-const Slide = styled.li`
+const Slider = styled.div`
+    max-width: 916px;
+    width: 100%;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    
+    margin: 55px 0 145px;
+    position: relative;
+`
+const Slide = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 `
 
 const ImageSlide = styled.img`
@@ -160,9 +118,6 @@ export const S = {
     WrapperTestimony,
     WrapperSlider,
     PaginationButton,
-    PaginationPrev,
-    PaginationNext,
-    PaginationMobile,
     Slider,
     Slide,
     ImageSlide,

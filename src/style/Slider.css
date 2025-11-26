@@ -1,0 +1,23 @@
+.alice-carousel__dots {
+    display: none;
+}
+
+.alice-carousel__prev-btn, .alice-carousel__next-btn  {
+    width: max-content;
+    position: absolute;
+    top: 20%;
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: scale(1.3);
+    }
+}
+
+.alice-carousel__prev-btn {
+    left: -20%;
+}
+
+.alice-carousel__next-btn  {
+    right: -20%;
+}
