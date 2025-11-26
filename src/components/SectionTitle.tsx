@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import {font} from "../common/font/font.tsx";
+import {theme} from "../style/Theme.tsx";
 
 type SectionTitlePropsType = {
     title?: string
@@ -19,40 +21,37 @@ type SubTitlePropsType = Pick<SectionTitlePropsType, "fontColor" | "bgColor" | "
 export const SectionTitle = (props: SectionTitlePropsType) => {
     return (
         <StyledSectionTitle alignTitle={props.alignTitle} marginTop={props.marginTop}>
-            <TextTitle fontColorTitle={props.fontColorTitle}>{props.title}</TextTitle>
-            <SubTitle borderColor={props.borderColor} fontColor={props.fontColor}
-                      bgColor={props.bgColor}>{props.subtitle || ""}</SubTitle>
+            <TextTitle fontColorTitle={props.fontColorTitle}>{props.title}
+                <SubTitle borderColor={props.borderColor} fontColor={props.fontColor}
+                          bgColor={props.bgColor}>{props.subtitle || ""}</SubTitle>
+            </TextTitle>
+
         </StyledSectionTitle>
     )
 }
 
 const StyledSectionTitle = styled.div<StyledSectionTitlePropsType>`
     text-align: ${props => props.alignTitle || "center"};
-    position: relative;
-    z-index: 0;
     margin-top: ${props => props.marginTop || "0"};
 `
 
 const TextTitle = styled.h2<TextTitlePropsType>`
-    font-family: "Jost", sans-serif;
-    font-size: calc((100vw - 360px) / (1920 - 360) * (120 - 50) + 50px);
-    font-weight: 300;
+    position: relative;
+    z-index: 0;
+    
     color: ${props => props.fontColorTitle || "#F8F8F8"};
-    line-height: 150%;
-    letter-spacing: -0.04em;
+
+    ${font({family: "'Jost', sans-serif", Fmax: 120, Fmin: 50, weight: 300, lineHeight: 1.5, letterSpacing: -0.04})}
     text-transform: uppercase;
 `
 
 const SubTitle = styled.span<SubTitlePropsType>`
-    font-family: "Inconsolata", monospace;
-    font-size: calc((100vw - 360px) / (1920 - 360) * (20 - 10) + 10px);
-    font-weight: 400;
+    ${font({family: "'Inconsolata', monospace", Fmax: 20, Fmin: 10, lineHeight: 1.26, letterSpacing: 0.1})}
     white-space: nowrap;
-    line-height: 126%;
-    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: ${props => props.fontColor || "#111111"};
-    background-color: ${props => props.bgColor || "#fff"};
+
+    background-color: ${props => props.bgColor || `${theme.colors.fontColor}`};
     border: ${props => props.borderColor || "1px solid #F8F8F8"};
 
     display: inline-block;

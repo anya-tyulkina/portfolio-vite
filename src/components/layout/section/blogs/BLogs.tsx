@@ -7,6 +7,7 @@ import photoNews3 from "../../../../assets/images/news-3.png";
 import {Button} from "../../../Button.tsx";
 import {News} from "./news/News.tsx";
 import * as React from "react";
+import {theme} from "../../../../style/Theme.tsx";
 
 
 const newsList = [
@@ -50,6 +51,10 @@ export const BLogs: React.FC = () => {
 
 const StyledBLogs = styled.section`
     padding-bottom: 200px;
+    
+    @media ${theme.media.desktop} {
+        padding-bottom: 80px;
+    }
     
     & a {
         margin: 0 auto;

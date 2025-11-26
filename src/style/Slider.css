@@ -5,19 +5,34 @@
 .alice-carousel__prev-btn, .alice-carousel__next-btn  {
     width: max-content;
     position: absolute;
-    top: 20%;
+    top: 15%;
     cursor: pointer;
+    padding: 0;
+
 
     transition: transform 0.3s ease;
     &:hover {
         transform: scale(1.3);
     }
+
+    @media screen and (max-width: 1330px) {
+        top: auto;
+        bottom: -40%;
+    }
 }
 
 .alice-carousel__prev-btn {
     left: -20%;
+
+    @media screen and (max-width: 1330px) {
+        left: 30%;
+    }
 }
 
 .alice-carousel__next-btn  {
     right: -20%;
+
+    @media screen and (max-width: 1330px) {
+        right: 30%;
+    }
 }

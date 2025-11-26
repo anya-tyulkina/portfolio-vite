@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {font} from "../../common/font/font.tsx";
 
 const MenuList = styled.ul`
     display: flex;
@@ -7,16 +8,6 @@ const MenuList = styled.ul`
     gap: 40px;
 
     max-height: 220px;
-
-    @media screen and (max-width: 1080px) {
-        max-height: 100px;
-        width: 100%;
-        align-items: center;
-    }
-
-    @media screen and (max-width: 1080px) {
-        grid-area: 3/1/3/3;
-    }
 `
 
 const ManuItem = styled.li`
@@ -24,10 +15,8 @@ const ManuItem = styled.li`
 `
 
 const MenuLink = styled.a`
-    font-family: "Rubik", sans-serif;
-    letter-spacing: 0.08em;
-    color: #8F8F8F;
     
+    ${font({color: "#8F8F8F", letterSpacing: 0.08, family: "'Rubik', sans-serif"})}
     text-transform: uppercase;
     
     &:hover {

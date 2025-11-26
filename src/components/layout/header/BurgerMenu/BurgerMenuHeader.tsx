@@ -14,10 +14,10 @@ export const BurgerMenuHeader: React.FC<BurgerMenuHeaderPropsType> = ({isOpen, s
     return (
         <StyledBurgerMenuHeader>
             <Icon iconId={"logo"} width={"180"} height={"30px"} viewBox={"0 0 220 30"}/>
-            <BurgerButton onClick={ () =>  setOpen (!isOpen)} isOpen={isOpen}>
+            <BurgerButton onClick={() => setOpen(!isOpen)} isOpen={isOpen}>
                 <span></span>
             </BurgerButton>
-            <MenuListPopup isOpen={isOpen}>
+            <MenuListPopup isOpen={isOpen} onClick={() => setOpen(false)}>
                 <Menu/>
             </MenuListPopup>
         </StyledBurgerMenuHeader>
@@ -25,22 +25,21 @@ export const BurgerMenuHeader: React.FC<BurgerMenuHeaderPropsType> = ({isOpen, s
 };
 
 const StyledBurgerMenuHeader = styled.nav`
-    position: relative;
-    z-index: 7;
-    
     svg {
         position: fixed;
-        z-index: 6;
+        z-index: 4;
         top: 30px;
         left: 15px;
     }
 
-        @media ${theme.media.tablet} {
+    @media ${theme.media.desktop} {
         svg {
+            top: 20px;
+            
             width: 100px;
             height: 20px;
         }
-}
+    }
 `
 
 const MenuListPopup = styled.div<{ isOpen: boolean }>`
@@ -49,16 +48,16 @@ const MenuListPopup = styled.div<{ isOpen: boolean }>`
     bottom: 0;
     right: 0;
     left: 0;
-    z-index: 2;
+    z-index: 3;
 
     background-color: rgba(18, 17, 17, 0.9);
 
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     opacity: ${props => (props.isOpen ? 1 : 0)};
-    visibility: ${props => (props.isOpen ? "visible" : "hidden" )};
+    visibility: ${props => (props.isOpen ? "visible" : "hidden")};
     transition: 0.3s ease;
 
     a {
@@ -69,7 +68,7 @@ const MenuListPopup = styled.div<{ isOpen: boolean }>`
             color: #514f4f;
         }
     }
-    
+
     ul {
         display: flex;
         gap: 60px;
@@ -81,16 +80,16 @@ const MenuListPopup = styled.div<{ isOpen: boolean }>`
 
 const BurgerButton = styled.button<{ isOpen: boolean }>`
     position: fixed;
-    z-index: 3;
+    z-index: 5;
     width: 40px;
     height: 30px;
 
     top: 30px;
     right: 50px;
 
-    @media ${theme.media.tablet} {
-        top: 20px;
-        right: 10px;
+    @media ${theme.media.desktop} {
+        top: 10px;
+        right: 5px;
     }
 
     span {
@@ -103,9 +102,10 @@ const BurgerButton = styled.button<{ isOpen: boolean }>`
 
         ${props => props.isOpen && css<{ isOpen: boolean }>`
             background-color: rgba(255, 255, 255, 0);
-        `}
-
-        @media ${theme.media.tablet} {
+        `} 
+        
+        
+        @media ${theme.media.desktop} {
         width: 25px;
         height: 2px;
     }
@@ -123,12 +123,12 @@ const BurgerButton = styled.button<{ isOpen: boolean }>`
 
         ${props => props.isOpen && css<{ isOpen: boolean }>`
             transform: rotate(45deg) translateY(0);
-        `}
-
-        @media ${theme.media.tablet} {
+        `} 
+        
+        @media ${theme.media.desktop} {
         width: 20px;
         height: 2px;
-    }
+        }
     }
 
     &::after {
@@ -143,9 +143,9 @@ const BurgerButton = styled.button<{ isOpen: boolean }>`
 
         ${props => props.isOpen && css<{ isOpen: boolean }>`
             transform: rotate(-45deg) translateY(0);
-        `}
-
-        @media ${theme.media.tablet} {
+        `} 
+        
+        @media ${theme.media.desktop} {
         width: 20px;
         height: 2px;
     }

@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import {font} from "../../../../common/font/font.tsx";
+import {theme} from "../../../../style/Theme.tsx";
 
 const Achievement = styled.section`
-    padding: 200px 0 120px;
+    padding: 146px 0 126px;
+
+    @media ${theme.media.desktop} {
+        padding: 50px 0 50px;
+    }
 `
 
 const AchievementItem = styled.article`

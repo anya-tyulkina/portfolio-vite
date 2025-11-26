@@ -38,7 +38,7 @@ const StyledButton = styled.button<ButtonPropsType>`
     text-transform: uppercase;
     
     max-width: ${props => props.width || "200px"};
-    min-height: ${props => props.height || "60px"};
+    max-height: ${props => props.height || "62px"};
 
     display: flex;
     justify-content: center;

@@ -1,68 +1,91 @@
 import styled from "styled-components";
 import {theme} from "../../../../style/Theme.tsx";
 import {font} from "../../../../common/font/font.tsx";
+import mainPhoto from "../../../../assets/images/bgMain.webp"
 
 const Main = styled.section`
     min-height: 100vh;
     max-width: 100%;
-    overflow: hidden;
 
     position: relative;
 
-    background-color: ${theme.colors.primaryBg};
+    background: ${theme.colors.primaryBg} url(${mainPhoto}) no-repeat 80% 100% / contain;
 `
 
-const TitleMain = styled.div`
+const WrapperTitleMain = styled.div`
     min-height: 100vh;
-
+    max-width: 720px;
+    padding: 100px 15px;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
 
     color: ${theme.colors.fontColor};
 
     position: absolute;
     z-index: 1;
-
-    span:first-child {
+    
+    p:first-child {
+        display: none;
+    } 
+    
+    & > span:first-child {
         ${font({
-    family: "'Inconsolata', monospace",
-    Fmax: 18,
-    Fmin: 20,
-    weight: 800,
-    letterSpacing: 0.24,
-    color: "#FFFFFF"
-})}
+            family: "'Inconsolata', monospace",
+            Fmax: 22,
+            Fmin: 18,
+            weight: 800,
+            letterSpacing: 0.24,
+            color: "#FFFFFF"
+        })}
         text-transform: uppercase;
 
         background-color: #ECECEC2B;
         width: fit-content;
 
         padding: 0.24em;
-        z-index: 1;
     }
 
-    @media ${theme.media.desktop}{
-        
-        padding-top: 100px;
+    @media ${theme.media.desktop} {
         justify-content: flex-start;
-        gap: 10px;
+        gap: 20px;
     }
 `
 
 
-const SmallText = styled.span``
+const SmallText = styled.span`
+`
 
-const TextMain = styled.h1`
-    ${font({Fmax: 110, Fmin: 40, weight: 800, letterSpacing: 0.04, color: "#FFFFFF"})}
+const TitleMain = styled.h1`
+    ${font({Fmax: 110, Fmin: 30, weight: 800, letterSpacing: 0.04, color: `${theme.colors.fontColor}`})}
     white-space: pre-wrap;
 
     margin: 50px 0 35px;
 
-    @media ${theme.media.desktop} {
-        margin: 10px 0 10px;
+        @media ${theme.media.tablet} {
+        margin: 20px 0 20px;
     }
+`
+
+const Name = styled.span``
+
+const TextMain = styled.p`
+    margin-bottom: 66px;
+    max-width: 720px;
+    width: 100%;
+
+    ${font({
+        Fmax: 24,
+        Fmin: 18,
+        letterSpacing: 0.02,
+        lineHeight: 1.9,
+        color: `${theme.colors.fontColor}`
+     })} 
+    
+    @media ${theme.media.tablet} {
+        margin-bottom: 20px;
+     }
 `
 
 const ButtonMain = styled.button`
@@ -71,10 +94,10 @@ const ButtonMain = styled.button`
     white-space: nowrap;
     text-transform: uppercase;
     cursor: pointer;
-    
+
     background-color: transparent;
     border: 1px solid ${theme.colors.fontColor};
-    
+
     ${font({color: theme.colors.fontColor, letterSpacing: 0.1, weight: 600})}
 
     display: flex;
@@ -91,12 +114,12 @@ const ButtonMain = styled.button`
             transform: scale(1.1);
         }
     }
-    
-    
+
+
     @media ${theme.media.desktop} {
         max-width: 150px;
         height: 40px;
-        
+
         font-size: 10px;
     }
 `
@@ -115,8 +138,10 @@ const MainImage = styled.img`
 
 export const S = {
     Main,
+    WrapperTitleMain,
     TitleMain,
     SmallText,
+    Name,
     TextMain,
     ButtonMain,
     MainImage

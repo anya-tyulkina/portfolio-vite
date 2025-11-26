@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import {theme} from "../../../../style/Theme.tsx";
 import bgImg from "../../../../assets/images/bgAchievement.jpg";
-import arrow from "../../../../assets/images/arrowPagination.svg";
-
 
 const Testimony = styled.section`
     color: ${theme.colors.fontColor};
@@ -42,20 +40,6 @@ const WrapperSlider = styled.div`
     width: 100%;
 `
 
-const PaginationButton = styled.button`
-    background-image: url("${arrow}");
-    background-repeat: no-repeat;
-    width: 25px;
-    height: 50px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    
-    @media ${theme.media.tablet} {
-        display: none;
-    }
-`;
-
 
 // slider
 
@@ -69,7 +53,10 @@ const Slider = styled.div`
     gap: 8px;
     
     margin: 55px 0 145px;
-    position: relative;
+    
+    // @media ${theme.media.desktop} {
+    //     margin: 55px 0 50px;
+    // }
 `
 const Slide = styled.div`
     display: flex;
@@ -117,7 +104,6 @@ export const S = {
     Testimony,
     WrapperTestimony,
     WrapperSlider,
-    PaginationButton,
     Slider,
     Slide,
     ImageSlide,

@@ -9,10 +9,12 @@ const WrapperNews = styled.div`
     column-gap: 30px;
     row-gap: 30px;
 
-    place-content: center;
-    
+    //place-content: center;
     padding: 60px 0 60px;
     
+    @media ${theme.media.desktop} {
+        
+    }
 `
 
 
@@ -51,7 +53,11 @@ const WrapperTitle = styled.div`
     margin-right: 2px;
 
     background-image: linear-gradient(rgba(243, 243, 243, 0), rgba(46, 46, 46, 0.47));
+    
 
+    @media ${theme.media.desktop} {
+        padding: 30px 10px;
+    }
 `
 
 const ImageNews = styled.img`

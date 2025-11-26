@@ -12,6 +12,10 @@ const Contacts = styled.section`
         line-height: 225%;
         letter-spacing: 0.02em;
     }
+    
+    @media ${theme.media.desktop} {
+        padding: 50px 0 50px;
+    }
 `
 const GridWrapperContacts = styled.div`
     display: grid;
@@ -28,8 +32,17 @@ const GridWrapperContacts = styled.div`
     @media screen and (max-width: 1080px) {
         ul {
             grid-area: 3/1/3/3;
+            max-height: 100px;
+            width: 100%;
+            align-items: center;
         }
-    }
+
+        @media screen and (max-width: 576px) {
+            ul {
+                max-height: 100%;
+                align-items: flex-start;
+            }
+        }
 `
 
 const Subscribe = styled.div`
@@ -72,7 +85,7 @@ const LinkContacts = styled.div`
 
         grid-area: 2/1/3/3;
     }
- 
+
 
 `
 
@@ -87,7 +100,7 @@ const Email = styled.a`
     letter-spacing: 0.01em;
     color: ${theme.colors.fontColorSecondary};
     padding-bottom: 5px;
-    
+
     width: 100%;
 
     position: relative;

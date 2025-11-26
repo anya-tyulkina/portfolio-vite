@@ -1,45 +1,50 @@
 import styled from "styled-components";
 import {font} from "../../../../common/font/font.tsx";
+import {theme} from "../../../../style/Theme.tsx";
 
 //about me
 const AboutMe = styled.section`
-    padding-top: 100px;
+    padding-top: 90px;
+    
+    h2 {
+        width: fit-content;
+    }
+    
+    @media ${theme.media.desktop} {
+        padding-top: 30px;
+    }
 `
 
 const InfoAboutMe = styled.div`
-    width: 450px;
-    margin-top: 20px;
-
     flex-grow: 1;
+    
+    @media screen and (min-width: 920px) {
+        width: 300px;
+        max-width: 650px;
+    }
 `
 
 const Description = styled.p`
-    ${font({letterSpacing: 0.02, lineHeight: 2.38, color: "#555555"})}
+    ${font({Fmax: 18, Fmin: 22, letterSpacing: 0.02, lineHeight: 2.38, color: "#555555"})}
 
-    margin-bottom: 60px;
+    margin: 20px 0 60px;
 `
 
 //skills
 
 const Skills = styled.div`
-    width: 400px;
     flex-grow: 1;
+    
+    @media screen and (min-width: 920px) {
+        width: 300px;
+        max-width: 500px;
+    }
 `
 
-const Skill = styled.div`
+const Skill = styled.article`
     display: flex;
     flex-direction: column;
     gap: 24px;
-`
-
-const ProgressLineSkill = styled.div<{width?: string}>`
-    background-color: #3A3422;
-    width: ${props => props.width || "0"}%;
-    height: 2px;
-    
-    @media screen and (max-width: 960px) {
-        height: 10px;
-    }
 `
 
 const SkillList = styled.ul`
@@ -50,6 +55,16 @@ const SkillItem = styled.li`
     color: #2F2F2F;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+`
+
+const ProgressLineSkill = styled.div<{width?: string}>`
+    background-color: #3A3422;
+    width: ${props => props.width || "0"}%;
+    height: 2px;
+    
+    @media ${theme.media.desktop} {
+        height: 10px;
+    }
 `
 
 const ProgressSkill = styled.div`

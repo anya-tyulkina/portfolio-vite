@@ -9,7 +9,7 @@ type SkillsTypeProps = {
 export const Skills: React.FC<SkillsTypeProps> = (props: SkillsTypeProps) => {
     return (
         <S.Skills>
-            <FlexWrapper direction={"column"} gap={"34px"} justify={"space-between"} wrap={"wrap"}>
+            <FlexWrapper direction={"column"} gap={"34px"} justify={"space-between"}>
                 {
                     props.skills.map((skill, index) => {
                         return (
