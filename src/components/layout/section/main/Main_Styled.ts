@@ -49,7 +49,6 @@ const WrapperTitleMain = styled.div`
 
     @media ${theme.media.desktop} {
         justify-content: flex-start;
-        gap: 20px;
     }
 `
 
@@ -64,7 +63,7 @@ const TitleMain = styled.h1`
     margin: 50px 0 35px;
 
         @media ${theme.media.tablet} {
-        margin: 20px 0 20px;
+        margin: 10px 0 10px;
     }
 `
 
@@ -74,18 +73,19 @@ const TextMain = styled.p`
     margin-bottom: 66px;
     max-width: 720px;
     width: 100%;
+    line-height: 1.9;
 
     ${font({
         Fmax: 24,
         Fmin: 18,
         letterSpacing: 0.02,
-        lineHeight: 1.9,
         color: `${theme.colors.fontColor}`
      })} 
     
     @media ${theme.media.tablet} {
         margin-bottom: 20px;
-     }
+        line-height: 1.4;
+    }
 `
 
 const ButtonMain = styled.button`
@@ -106,13 +106,9 @@ const ButtonMain = styled.button`
     gap: 12px;
     padding: 20px 40px;
 
-    @media screen and (min-width: 768px) {
-        cursor: pointer;
-
-        transition: transform 0.3s ease;
-        &:hover {
-            transform: scale(1.1);
-        }
+    transition: ${theme.animation.transition};
+    &:hover {
+        transform: scale(1.1);
     }
 
 

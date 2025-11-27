@@ -19,7 +19,7 @@ export const TabMenu: React.FC<TabMenuPropsType> = (props: TabMenuPropsType) => 
                     props.tabItems.map((tabItem, index) => {
                         return (
                             <ListItem key={index}>
-                                <Link active={props.currentTabStatus === tabItem.status} as={"button"} onClick={() => {
+                                <Link $active={props.currentTabStatus === tabItem.status} as={"button"} onClick={() => {
                                     props.changeFilterStatus(tabItem.status)
                                 }}>{tabItem.title}</Link>
                             </ListItem>
@@ -51,12 +51,14 @@ const StyledTabMenu = styled.nav`
 const ListItem = styled.li`
 
 `
-const Link = styled.a<{ active?: boolean }>`
-    ${font({Fmax: 40, Fmin: 20})}
+const Link = styled.a<{ $active?: boolean }>`
+    ${font({Fmax: 30, Fmin: 15})}
     padding-bottom: 10px;
     position: relative;
     z-index: 0;
 
+    transition: ${theme.animation.transition};
+    
     &:hover {
         transform: scale(1.1);
     }
@@ -77,7 +79,9 @@ const Link = styled.a<{ active?: boolean }>`
         position: absolute;
         z-index: -1;
 
-        ${props => props.active && css<{ active?: boolean }>`
+        transition: ${theme.animation.transition};
+
+        ${props => props.$active && css<{ $active?: boolean }>`
             height: 10px;
         `}
     }

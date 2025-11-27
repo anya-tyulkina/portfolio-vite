@@ -5,16 +5,17 @@ import {theme} from "../style/Theme.tsx";
 type ButtonPropsType = {
     text?: string
     img?: string
-    bgColor?: string
+    $bgColor?: string
     color?: string
     elemType?: string
     width?: string
     height?: string
+    type?: "submit" | "button"
 }
 
 export const Button = (props: ButtonPropsType) => {
     return (
-        <StyledButton width={props.width} height={props.height} as={props.elemType} bgColor={props.bgColor} color={props.color}>
+        <StyledButton type={props.type} width={props.width} height={props.height} as={props.elemType} $bgColor={props.$bgColor} color={props.color}>
             {props.text}
             {props.img &&
                 <WrapperIcon>
@@ -30,7 +31,7 @@ const StyledButton = styled.button<ButtonPropsType>`
 
     font-family: "Manrope", monospace;
     font-weight: 600;
-    background-color: ${props => props.bgColor || `${theme.colors.colorButtonBg}`};
+    background-color: ${props => props.$bgColor || `${theme.colors.colorButtonBg}`};
     font-size: 17px;
     color: ${props => props.color || `${theme.colors.fontColor}`};
     border: 1px solid ${theme.colors.fontColor};
@@ -49,16 +50,12 @@ const StyledButton = styled.button<ButtonPropsType>`
     
     white-space: nowrap;
 
-
-
-    @media screen and (min-width: 768px) {
-        cursor: pointer;
-        
-        transition: transform 0.3s ease;
-        &:hover {
-            transform: scale(1.1);
-        }
+    cursor: pointer;
+    transition: ${theme.animation.transition};
+    &:hover {
+        transform: scale(1.1);
     }
+    
     
 `
 

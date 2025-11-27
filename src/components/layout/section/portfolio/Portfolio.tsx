@@ -9,8 +9,10 @@ import {S} from "./Works_Styled.ts";
 import * as React from "react";
 import {TabMenu, TabMenuType} from "./TabMenu.tsx";
 import {useState} from "react";
+import {AnimatePresence, motion} from "motion/react"
 
-const works = [
+
+const portfolio = [
     {
         id: 1,
         type: "spa",
@@ -63,17 +65,17 @@ const tabItems: Array<{ title: string, status: TabMenuType }> = [
 
 export const Works: React.FC = () => {
     const [currentTabStatus, setCurrentTabStatus] = useState("all");
-    let filteredWorks = works;
+    let filteredWorks = portfolio;
 
     switch (currentTabStatus) {
         case "react":
-            filteredWorks = works.filter((work) => work.type === "react");
+            filteredWorks = portfolio.filter((work) => work.type === "react");
             break;
         case "redux":
-            filteredWorks = works.filter((work) => work.type === "redux");
+            filteredWorks = portfolio.filter((work) => work.type === "redux");
             break;
         case "spa":
-            filteredWorks = works.filter((work) => work.type === "spa");
+            filteredWorks = portfolio.filter((work) => work.type === "spa");
             break;
     }
 
@@ -82,19 +84,29 @@ export const Works: React.FC = () => {
     }
 
     return (
-        <S.Works>
+        <S.Works id={"portfolio"}>
             <Container>
-                <SectionTitle title={"portfolio"} subtitle={"Latest portfolio"}/>
+                <SectionTitle $title={"portfolio"} subtitle={"Latest portfolio"}/>
                 <TabMenu currentTabStatus={currentTabStatus} changeFilterStatus={changeFilterStatus}
                          tabItems={tabItems}/>
                 <S.WrapperWorks>
-                    {
-                        filteredWorks.map((item) => {
+                    <AnimatePresence>
+                        {filteredWorks.map((item) => {
                             return (
-                                <Work key={item.id} src={item.src} title={item.title}/>
+                                <motion.div
+                                    layout
+                                    key={item.id}
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    exit={{opacity: 0}}
+                                >
+                                    <Work key={item.id} src={item.src} title={item.title}/>
+                                </motion.div>
+
                             )
                         })
-                    }
+                        }
+                    </AnimatePresence>
                     <Button width={"290px"} elemType='a' img={"arrow"} text={"view all portfolio"}/>
                 </S.WrapperWorks>
             </Container>

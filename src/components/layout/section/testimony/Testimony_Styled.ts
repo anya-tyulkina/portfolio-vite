@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {theme} from "../../../../style/Theme.tsx";
 import bgImg from "../../../../assets/images/bgAchievement.jpg";
+import {font} from "../../../../common/font/font.tsx";
 
 const Testimony = styled.section`
     color: ${theme.colors.fontColor};
@@ -53,10 +54,6 @@ const Slider = styled.div`
     gap: 8px;
     
     margin: 55px 0 145px;
-    
-    // @media ${theme.media.desktop} {
-    //     margin: 55px 0 50px;
-    // }
 `
 const Slide = styled.div`
     display: flex;
@@ -80,15 +77,13 @@ const ImageSlide = styled.img`
 
 const Name = styled.span`
     font-size: 21px;
-    line-height: 225%;
-    letter-spacing: 0.02em;
+    ${font({lineHeight: 2.25, letterSpacing: 0.02})}
     text-transform: capitalize;
 `
 const Position = styled.span`
-    line-height: 178.5%;
-    letter-spacing: 0.05em;
     font-size: 14px;
     text-transform: uppercase;
+    ${font({lineHeight: 1.78, letterSpacing: 0.05})}
 `
 
 const TextSlide = styled.p`

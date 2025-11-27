@@ -8,8 +8,8 @@ export const Quote: React.FC = () => {
     return (
         <S.Quote>
             <Container>
-                <FlexWrapper direction={"column"} align={"center"} gap={"80px"}>
-                    <SectionTitle marginTop={"100px"} borderColor={"none"} title={"Quote of the day"}/>
+                <FlexWrapper direction={"column"} align={"center"} $gap={"80px"}>
+                    <SectionTitle $marginTop={"100px"} $borderColor={"none"} $title={"Quote of the day"}/>
                     <S.WrapperQuote>
                         <S.TextQuote>“Success is not final; failure is not fatal: it is the courage to continue that
                             counts.”</S.TextQuote>

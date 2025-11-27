@@ -3,19 +3,46 @@ import {Button} from "../../../Button.tsx";
 import {S} from "./Contacts_Styled.ts"
 import * as React from "react";
 import {Menu} from "../../../Menu/Menu.tsx";
+import emailjs from '@emailjs/browser';
+import {ElementRef, FormEvent, useRef} from "react";
+
 
 export const Contacts: React.FC = () => {
+    const form = useRef<ElementRef<"form">>(null);
+
+    const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!form.current) return
+
+
+        emailjs.sendForm('service_fxqj1we', 'template_lmhesnk', form.current, {
+            publicKey: 'EYUCVoedVafeljYrN',
+        })
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                },
+            );
+        e.currentTarget.reset();
+    };
+
+
     return (
-        <S.Contacts>
+        <S.Contacts id={"contact"}>
             <Container>
                 <S.GridWrapperContacts>
                     <S.Subscribe>
                         <S.TextSubscribe>Subscribe to newsletter to get some updates related with branding, designs and
                             more.</S.TextSubscribe>
-                        <S.FormSubscribe>
-                            <S.Field placeholder={"write your email address"}/>
-                            <Button height={"40px"} width={"350px"} elemType={"a"} text={"subscribe it"} color={"#fff"}
-                                    bgColor={"#000"}/>
+                        <S.FormSubscribe ref={form} onSubmit={sendEmail}>
+                            <S.Field required placeholder={"write your email"} name={"email"}/>
+                            <Button height={"40px"} width={"350px"} type={"submit"} text={"subscribe it"}
+                                    color={"#fff"}
+                                    $bgColor={"#000"}/>
                         </S.FormSubscribe>
                     </S.Subscribe>
                     <Menu/>

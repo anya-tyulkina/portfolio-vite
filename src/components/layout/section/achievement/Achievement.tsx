@@ -3,6 +3,7 @@ import {SectionTitle} from "../../../SectionTitle.tsx";
 import {FlexWrapper} from "../../../FlexWrapper.tsx";
 import * as React from "react";
 import {S} from "./Achievement_Styled.ts";
+import {Fade} from "react-awesome-reveal";
 
 const achievementList = [
     {id: 1, title: "Interior design", text: "Breakthrough designer of the year 2020"},
@@ -15,10 +16,11 @@ const achievementList = [
 
 export const Achievement: React.FC = () => {
     return (
-        <S.Achievement>
+        <S.Achievement id={"services"}>
             <Container>
-                <SectionTitle title={"achievement"} subtitle={"awards and recognition"}/>
-                <FlexWrapper justify={"space-between"} gap={"60px"} wrap={"wrap"}>
+                <SectionTitle $title={"achievement"} subtitle={"awards and recognition"}/>
+                <FlexWrapper $justify={"space-between"} $gap={"60px"} $wrap={"wrap"}>
+                    <Fade triggerOnce cascade={true} damping={0.3}>
                         {
                             achievementList.map((achievement) => {
                                 return (
@@ -29,6 +31,7 @@ export const Achievement: React.FC = () => {
                                 )
                             })
                         }
+                    </Fade>
                 </FlexWrapper>
             </Container>
         </S.Achievement>

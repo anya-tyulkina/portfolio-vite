@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import {theme} from "../../../../style/Theme.tsx";
+import {font} from "../../../../common/font/font.tsx";
 
 const WrapperNews = styled.div`
     width: 100%;
-    
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     column-gap: 30px;
@@ -11,31 +12,26 @@ const WrapperNews = styled.div`
 
     //place-content: center;
     padding: 60px 0 60px;
-    
-    @media ${theme.media.desktop} {
-        
-    }
 `
 
-
 const WrapperImage = styled.article`
-    
+
     position: relative;
     z-index: 0;
+    
+    &:hover {
+        &::before {
+            content: "";
+            background-color: rgba(0, 0, 0, 0.3);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
 
-    @media screen and (min-width: 768px) {
-        &:hover {
-            &::before {
-                content: "";
-                background-color: rgba(0, 0, 0, 0.3);
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-
-                position: absolute;
-                z-index: 1;
-            }
+            transition: 1s ease-in-out;
+            
+            position: absolute;
+            z-index: 1;
         }
     }
 `
@@ -53,7 +49,7 @@ const WrapperTitle = styled.div`
     margin-right: 2px;
 
     background-image: linear-gradient(rgba(243, 243, 243, 0), rgba(46, 46, 46, 0.47));
-    
+
 
     @media ${theme.media.desktop} {
         padding: 30px 10px;
@@ -71,8 +67,7 @@ const TitleNews = styled.span`
 const TimeNews = styled.time``
 
 const TextNews = styled.h3`
-    font-weight: 700;
-    font-size: calc((100vw - 360px) / (1920 - 360) * (26 - 18) + 18px);
+    ${font({Fmax: 26, Fmin: 18, weight: 700})}
     text-transform: capitalize;
 `
 

@@ -39,11 +39,11 @@ export type NewsListType = typeof newsList;
 export const BLogs: React.FC = () => {
 
     return (
-        <StyledBLogs>
+        <StyledBLogs id={"blogs"}>
             <Container>
-                    <SectionTitle title={"blogs"} subtitle={"latest news"}/>
+                    <SectionTitle $title={"blogs"} subtitle={"latest news"}/>
                     <News newsList={newsList}/>
-                    <Button elemType={"a"} img={"arrow-black"} bgColor={"none"} text={"view all blogs"} color={"#111"}/>
+                    <Button elemType={"a"} img={"arrow-black"} $bgColor={"none"} text={"view all blogs"} color={"#111"}/>
                 </Container>
         </StyledBLogs>
     );

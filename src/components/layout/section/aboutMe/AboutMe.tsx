@@ -3,17 +3,17 @@ import {SectionTitle} from "../../../SectionTitle.tsx";
 import {Button} from "../../../Button.tsx";
 import {Skills} from "./skills/Skills.tsx";
 import {FlexWrapper} from "../../../FlexWrapper.tsx";
-import {S} from "./About_Styled.tsx";
+import {S} from "./About_Styled.ts";
 import * as React from "react";
 
 const skills = ["React", "JS", "HTML", "CSS"];
 
 export const AboutMe: React.FC = () => {
     return (
-        <S.AboutMe>
+        <S.AboutMe id="about">
             <Container>
-                <SectionTitle title={"About"} subtitle={"Who am i"}/>
-                <FlexWrapper justify={"space-between"} gap={"80px"} wrap={"wrap"}>
+                <SectionTitle $title={"About"} subtitle={"Who am i"}/>
+                <FlexWrapper $justify={"space-between"} $gap={"80px"} $wrap={"wrap"}>
                     <S.InfoAboutMe>
                         <S.Description>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
                             maiores alias consequatur aut perferendis doloribus asperiores repellat quia voluptas sit

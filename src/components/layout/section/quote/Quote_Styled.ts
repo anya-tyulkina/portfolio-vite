@@ -46,11 +46,6 @@ const Quote = styled.section`
         
         @media ${theme.media.desktop}{
             display: none;
-             //background-image: url("");
-            // max-width: 150px;
-            // max-height: 100px;
-            // width: 100%;
-            // height: 100%;
         }
     }
 
@@ -75,12 +70,6 @@ const Quote = styled.section`
 
         @media ${theme.media.desktop}{
             display: none;
-            
-            // background-image: url("");
-            // max-width: 150px;
-            // max-height: 100px;
-            // width: 100%;
-            // height: 100%;
         }
     }
 }

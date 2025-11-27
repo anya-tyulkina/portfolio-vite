@@ -5,7 +5,7 @@ import Typewriter from 'typewriter-effect';
 
 export const Main: React.FC = () => {
     return (
-        <S.Main>
+        <S.Main id={"home"}>
             <Container>
                 <S.WrapperTitleMain>
                     <S.SmallText>hi! everyone</S.SmallText>

@@ -1,16 +1,13 @@
 import styled from "styled-components";
 import {theme} from "../../../../style/Theme.tsx";
+import {font} from "../../../../common/font/font.tsx";
 
 
 const Contacts = styled.section`
-
     padding: 160px 0 100px;
-    font-size: 17px;
 
     & p {
-        color: #494949;
-        line-height: 225%;
-        letter-spacing: 0.02em;
+        ${font({color: "#494949", lineHeight: 2.25, letterSpacing: 0.02})}
     }
     
     @media ${theme.media.desktop} {
@@ -25,11 +22,8 @@ const GridWrapperContacts = styled.div`
 
     @media screen and (max-width: 1080px) {
         grid-template-columns: 1fr;
-
         column-gap: 0;
-    }
-
-    @media screen and (max-width: 1080px) {
+        
         ul {
             grid-area: 3/1/3/3;
             max-height: 100px;
@@ -65,14 +59,12 @@ const Field = styled.input`
     min-height: 50px;
     max-width: 350px;
     margin: 40px 0 14px;
+    padding-left: 24px;
+
+    ${font({letterSpacing: 0.02, Fmax: 17, Fmin: 14})}
 
     &::placeholder {
-        font-family: "Manrope";
-        font-weight: 400;
-        font-size: 17px;
-        letter-spacing: 0.02em;
         text-transform: capitalize;
-        padding-left: 24px;
     }
 `
 
@@ -82,11 +74,8 @@ const LinkContacts = styled.div`
 
     @media screen and (max-width: 1080px) {
         max-width: 100%;
-
         grid-area: 2/1/3/3;
     }
-
-
 `
 
 const TextContact = styled.p`
@@ -94,16 +83,18 @@ const TextContact = styled.p`
 `
 
 const Email = styled.a`
-    font-size: calc((100vw - 360px) / (1920 - 360) * (30 - 20) + 20px);
-    font-weight: 200;
-    line-height: 183%;
-    letter-spacing: 0.01em;
-    color: ${theme.colors.fontColorSecondary};
+    ${font({Fmax: 30, Fmin: 20, weight: 200, lineHeight: 1.8, letterSpacing: 0.01, color: `${theme.colors.fontColorSecondary}`})}
+    
     padding-bottom: 5px;
 
-    width: 100%;
-
+    width: fit-content;
+    display: inline-block;
     position: relative;
+    
+    transition: ${theme.animation.transition};
+    &:hover {
+        transform: scale(1.1);
+    }
 
     &::before {
         content: "";
