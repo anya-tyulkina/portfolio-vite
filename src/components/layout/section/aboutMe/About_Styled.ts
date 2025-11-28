@@ -1,15 +1,16 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import {font} from "../../../../common/font/font.tsx";
 import {theme} from "../../../../style/Theme.tsx";
+
 
 //about me
 const AboutMe = styled.section`
     padding-top: 90px;
-    
+
     h2 {
         width: fit-content;
     }
-    
+
     @media ${theme.media.desktop} {
         padding-top: 30px;
     }
@@ -17,7 +18,7 @@ const AboutMe = styled.section`
 
 const InfoAboutMe = styled.div`
     flex-grow: 1;
-    
+
     @media screen and (min-width: 920px) {
         width: 300px;
         max-width: 650px;
@@ -34,7 +35,7 @@ const Description = styled.p`
 
 const Skills = styled.div`
     flex-grow: 1;
-    
+
     @media screen and (min-width: 920px) {
         width: 300px;
         max-width: 500px;
@@ -57,11 +58,21 @@ const SkillItem = styled.li`
     text-transform: uppercase;
 `
 
-const ProgressLineSkill = styled.div<{width?: string}>`
+const ProgressLineSkill = styled.div<{ $width?: number, $isVisible?: boolean, $delay?: string }>`
     background-color: #3A3422;
-    width: ${props => props.width || "0"}%;
+    width: 0;
     height: 2px;
+
+    animation: ${props => props.$isVisible ? keyframes`
+        from {
+            width: 0%;
+        }
+        to {
+            width: ${props.$width || 0}%;
+        }
+    ` : "none"} 1s ease-out ${props => props.$delay || "0ms"} forwards;
     
+
     @media ${theme.media.desktop} {
         height: 10px;
     }

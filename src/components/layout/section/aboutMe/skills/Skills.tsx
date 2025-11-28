@@ -1,55 +1,85 @@
 import {FlexWrapper} from "../../../../FlexWrapper.tsx";
 import {S} from "../About_Styled.ts";
 import * as React from "react";
-import ProgressBar from "@ramonak/react-progress-bar";
-import {useEffect, useState} from "react";
-import {Fade} from "react-awesome-reveal";
+import {useEffect, useRef, useState} from "react";
+// import ProgressBar from "@ramonak/react-progress-bar";
+// import {useEffect, useState} from "react";
+// import {Fade} from "react-awesome-reveal";
 
-type SkillsTypeProps = {
-    skills: string[];
+
+export type SkillItemType = {
+    id: number
+    title: string
+    progressLine: number
 }
 
-export const Skills: React.FC<SkillsTypeProps> = (props: SkillsTypeProps) => {
 
-    const [width, setWidth] = useState(window.innerWidth)
-    const breakpoin = 920;
+type SkillsTypeProps = {
+    skills: SkillItemType[]
+}
+
+export const Skills: React.FC<SkillsTypeProps> = ({skills}) => {
+
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        window.addEventListener("resize", () => {
-            setWidth(window.innerWidth);
-        })
+        const observer = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    // Отключаем наблюдение после первой анимации
+                    observer.disconnect();
+                }
+            }
+        );
 
-        return () => {
-            window.removeEventListener("resize", () => {
-            })
+        if (ref.current) {
+            observer.observe(ref.current);
         }
-    }, [])
+
+        return () => observer.disconnect();
+    }, []);
+    // const [width, setWidth] = useState(window.innerWidth)
+    // const breakpoin = 920;
+    //
+    // useEffect(() => {
+    //     window.addEventListener("resize", () => {
+    //         setWidth(window.innerWidth);
+    //     })
+    //
+    //     return () => {
+    //         window.removeEventListener("resize", () => {
+    //         })
+    //     }
+    // }, [])
 
     return (
-        <S.Skills>
+        <S.Skills ref={ref}>
             <FlexWrapper direction={"column"} $gap={"34px"} $justify={"space-between"}>
                 {
-                    props.skills.map((skill, index) => {
+                    skills.map((skill, index) => {
                         return (
-                            <S.Skill key={index}>
+                            <S.Skill key={skill.id}>
                                 <S.SkillList>
-                                    <S.SkillItem>{skill}</S.SkillItem>
+                                    <S.SkillItem>{skill.title}</S.SkillItem>
                                 </S.SkillList>
                                 <S.ProgressSkill>
 
-                                    {width < breakpoin
-                                        ? <Fade cascade={true} damping={1}>
-                                            <ProgressBar completed={"30"}
-                                                         borderRadius={"0"}
-                                                         bgColor={"#3A3422"}
-                                                         isLabelVisible={false}
-                                                         animateOnRender={true}
-                                                         baseBgColor={"#DBDBDB"}
-                                                         transitionDuration={"2s"}
-                                            />
-                                        </Fade>
-                                        : <S.ProgressLineSkill width={"30"}/>
-                                    }
+                                    <S.ProgressLineSkill $isVisible={isVisible} $width={skill.progressLine} $delay={index + "200ms"}/>
+
+                                    {/*{width < breakpoin*/}
+                                    {/*    ? <Fade cascade={true} damping={1}>*/}
+                                    {/*        <ProgressBar completed={"30"}*/}
+                                    {/*                     borderRadius={"0"}*/}
+                                    {/*                     bgColor={"#3A3422"}*/}
+                                    {/*                     isLabelVisible={false}*/}
+                                    {/*                     animateOnRender={true}*/}
+                                    {/*                     baseBgColor={"#DBDBDB"}*/}
+                                    {/*                     transitionDuration={"2s"}*/}
+                                    {/*        />*/}
+                                    {/*    </Fade>*/}
+                                    {/*}*/}
                                 </S.ProgressSkill>
                             </S.Skill>
                         )

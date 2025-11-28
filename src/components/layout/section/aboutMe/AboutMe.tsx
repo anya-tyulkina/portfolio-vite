@@ -1,12 +1,18 @@
 import {Container} from "../../../Container.tsx";
 import {SectionTitle} from "../../../SectionTitle.tsx";
 import {Button} from "../../../Button.tsx";
-import {Skills} from "./skills/Skills.tsx";
+import {SkillItemType, Skills} from "./skills/Skills.tsx";
 import {FlexWrapper} from "../../../FlexWrapper.tsx";
 import {S} from "./About_Styled.ts";
 import * as React from "react";
 
-const skills = ["React", "JS", "HTML", "CSS"];
+
+const skills: SkillItemType[] = [
+    {id: 1, title: "React", progressLine: 50},
+    {id: 2, title: "JS", progressLine: 30},
+    {id: 3, title: "HTML", progressLine: 70},
+    {id: 4, title: "CSS", progressLine: 60}
+];
 
 export const AboutMe: React.FC = () => {
     return (
